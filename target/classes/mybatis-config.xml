@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+	<settings>
+		<setting name="mapUnderscoreToCamelCase" value="true" />
+		<setting name="jdbcTypeForNull" value="VARCHAR" />
+	</settings>
+	<typeAliases>
+		<!-- :  찾지 못할 수도 있어서 범위를 좁혀줘야 함. -->
+		<package name="com.yedam.java.emp.service" />
+		<package name="com.yedam.java.book.service" />
+		<!-- <typeAlias type="" alias=""/> 개별 설정 : 잘 사용하지 않음-->
+	</typeAliases>
+		<!-- <package name="com.yedam.java/" /> -->
+		<!-- ★★★ *사용해서 전체 별칭 설정 불가능 -->
+		<!-- 1. root-package로 범위 설정(범위를 넓히는 방법) -->
+		
+	<typeHandlers>
+		<typeHandler javaType="java.sql.Date"
+			handler="org.apache.ibatis.type.DateTypeHandler" />
+	</typeHandlers>
+</configuration>
