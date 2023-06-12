@@ -3,6 +3,7 @@ package com.yedam.java.book.mapper;
 import java.util.List;
 
 import com.yedam.java.book.service.BookVO;
+import com.yedam.java.book.service.RentVO;
 
 public interface BookMapper {
 	//전체조회
@@ -13,4 +14,7 @@ public interface BookMapper {
 	
 	//등록
 	public int insertBookInfo(BookVO vo);
+	
+	//대여현황조회
+	public List<RentVO> selectRentList();
 }

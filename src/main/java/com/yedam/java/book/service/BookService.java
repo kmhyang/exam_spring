@@ -6,4 +6,5 @@ public interface BookService {
 	public List<BookVO> getBookList();
 	public int getBookNo();
 	public int insertBookInfo(BookVO vo);
+	public List<RentVO> getRentList();
 }

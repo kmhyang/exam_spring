@@ -14,11 +14,11 @@ public class BookVO {
 	private String bookPublisher;
 	private String bookInfo;
 	
-	public void setBookPrice(String bookPrice) {
-		if(bookPrice == null || !bookPrice.equals("")) {
-			this.bookPrice = 0;
-		}else {
-			this.bookPrice = Integer.parseInt(bookPrice);
-		}
-	}
+//	public void setBookPrice(String bookPrice) {
+//		if(bookPrice == null || !bookPrice.equals("")) {
+//			this.bookPrice = 0;
+//		}else {
+//			this.bookPrice = Integer.parseInt(bookPrice);
+//		}
+//	}
 }

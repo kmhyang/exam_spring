@@ -66,4 +66,14 @@
 							)
 </insert>
 
+<select id="selectRentList" resultType="RentVO">
+		SELECT b.book_no, 
+					 b.book_name, 
+					 sum(NVL(r.rent_price,0)) rent_total_price, 
+					 count(r.rent_no) rent_count
+		FROM 	 book_tbl_06 b LEFT OUTER JOIN rent_tbl_06 r 
+		ON 		 b.book_no = r.book_no
+		GROUP  BY b.book_no, b.book_name
+		order  by 1
+</select>
 </mapper>

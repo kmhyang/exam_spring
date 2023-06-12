@@ -6,12 +6,22 @@
 <meta charset="UTF-8">
 <title>도서 등록</title>
 <style>
-#container{
-  width: 500px;
-  margin: 0 auto;
+#container {
+	width: 500px;
+	margin: 0 auto;
 }
-h3{
+
+h3, .insertBtn {
 	text-align: center;
+}
+
+th {
+	width: 100px;
+	text-align: center;
+}
+
+td input, textarea {
+	width: 250px;
 }
 </style>
 </head>
@@ -50,8 +60,10 @@ h3{
 					<td><textarea name="bookInfo"></textarea></td>
 				</tr>
 			</table>
-			<button type="submit">등록</button>
-			<button type="button" onclick="location.href='bookList'">조회</button>
+			<div class="insertBtn">
+				<button type="submit">등록</button>
+				<button type="button" onclick="location.href='bookList'">조회</button>
+			</div>
 			<!-- 상대경로지만 절대경로로 지정해야할 경우도 있음. -->
 		</div>
 	</form>

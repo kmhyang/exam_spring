@@ -37,10 +37,9 @@ h2, th{
 					<td>${list.bookName}</td>
 					<td><img style="width: 100px;"
 						src="<c:url value='/resources/images/${list.bookCoverimg}'/>"></td>
-					<td><fmt:formatDate value="${list.bookDate}"
-							pattern="yyyy/MM/dd" /></td>
-					<td><fmt:formatNumber value="${list.bookPrice}"
-							pattern="#,###" /></td>
+					<td><fmt:formatDate value="${list.bookDate}" pattern="yyyy/MM/dd" /></td>
+					<td><fmt:formatNumber value="${list.bookPrice}" pattern="#,###" /></td>
+					<!-- <td><fmt:formatNumber value="${list.bookPrice}" type="number" maxFractionDigits="3" /></td> -->
 					<td>${list.bookPublisher}</td>
 					<td>${list.bookInfo}</td>
 				</tr>

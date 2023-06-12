@@ -42,7 +42,7 @@ public class BookController {
 	//대여현황 페이지
 	@GetMapping("rentList")
 	public String getRentList(Model model) {
-		
+		model.addAttribute("rentList", bookService.getRentList());
 		return "book/rentList";
 	}
 	
