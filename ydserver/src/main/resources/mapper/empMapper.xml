@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yedam.app.emp.mapper.EmpMapper">
+	<!-- 전체조회 -->
+	<select id="selectEmpAll" resultType="EmpVO">
+		SELECT employee_id,
+			   last_name,
+			   email,
+			   TO_CHAR(hire_date, 'rrrr-MM-dd') hire_date,
+			   job_id,
+			   department_id,
+			   department_name
+		FROM emp_tbl_01 JOIN departments USING(department_id)		
+		<where>
+			<if test="departmentId != null and !departmentId.equals('')">
+				department_id = #{departmentId}
+			</if>
+		</where>
+		ORDER BY employee_id desc
+	</select>
+	
+	<!-- 단건조회 -->
+	<select id="selectEmpInfo" resultType="EmpVO">
+		SELECT employee_id,
+			   last_name,
+			   email,
+			   TO_CHAR(hire_date, 'rrrr-MM-dd') hire_date,
+			   job_id,
+			   department_id,
+			   department_name
+		FROM emp_tbl_01 JOIN departments USING(department_id)
+		WHERE employee_id = #{employeeId}
+	</select>
+	
+	<!-- 등록 -->
+	<insert id="insertEmpInfo" parameterType="EmpVO">
+		<selectKey keyProperty="employeeId"
+				   resultType="String"
+				   order="BEFORE">
+		SELECT NVL(MAX(employee_id), 100) + 1
+		FROM emp_tbl_01
+		</selectKey>
+		INSERT INTO emp_tbl_01
+					(
+						employee_id
+						,last_name
+						,email
+						<if test="hireDate != null and !hireDate.equals('')">
+						,hire_date
+						</if>
+						,job_id
+						<if test="departmentId != null and !departmentId.equals('')">
+						,department_id
+						</if>
+					)
+				VALUES
+				    (
+				    	#{employeeId}
+						,#{lastName}
+						,#{email}
+						<if test="hireDate != null and !hireDate.equals('')">
+						,#{hireDate}
+						</if>
+						,#{jobId}
+						<if test="departmentId != null and !departmentId.equals('')">
+						,#{departmentId}
+						</if>
+				    )
+	</insert>
+	
+	<!-- 수정 -->
+	<update id="updateEmpInfo" parameterType="EmpVO">
+		UPDATE emp_tbl_01
+		<set>
+			<if test="lastName != null and !lastName.equals('')">
+				last_name = #{lastName},
+			</if>
+			<if test="email != null and !email.equals('')">
+				email = #{email},
+			</if>
+			<if test="hireDate != null and !hireDate.equals('')">
+				hire_date = #{hireDate},
+			</if>
+			<if test="jobId != null and !jobId.equals('')">
+				job_id = #{jobId},
+			</if>
+			<if test="departmentId != null and !departmentId.equals('')">
+				department_id = #{departmentId}
+			</if>
+			<if test="departmentId == null or departmentId.equals('')">
+				department_id = null
+			</if>
+		</set>
+		WHERE employee_id = #{employeeId}
+	</update>
+	
+	<!-- 삭제 -->
+	<delete id="deleteEmpInfo" parameterType="EmpVO">
+		DELETE FROM emp_tbl_01
+		WHERE employee_id = #{employeeId}
+	</delete>
+
+</mapper>
