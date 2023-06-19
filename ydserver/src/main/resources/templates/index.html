@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="css/style.css" rel="stylesheet">
+    <style>
+        /* Create three unequal columns that floats next to each other */
+        .column {
+            float: left;
+            padding: 10px;
+            height: 300px;
+            /* Should be removed. Only for demonstration */
+        }
+
+        .left,
+        .right {
+            width: 25%;
+        }
+
+        .middle {
+            width: 50%;
+        }
+
+        /* Clear floats after the columns */
+        .row:after {
+            content: "";
+            display: table;
+            clear: both;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="row">
+        <!-- 부서별 직원정보 -->
+        <div class="column">
+            <div>
+                <label for="deptInfo">부서명</label>
+                <select id="deptInfo">
+                    <option value="" selected>전체</option>
+                </select>
+                <button type="button" id="resetBtn">선택취소</button>
+                <button type="button" id="chkDelBtn">선택삭제</button>
+            </div>
+            <div class="layout">
+                <table id="empList">
+                    <thead>
+                        <tr>
+                            <th><input type="checkbox" id="allCheck"></th>
+                            <th>사원번호</th>
+                            <th>사원이름</th>
+                            <th>입사일</th>
+                            <th>업무</th>
+                            <th>부서이름</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="column"></div>
+        <!-- 개별 직원정보 -->
+        <div class="column">
+            <div>
+                <h3>사원 정보</h3>
+            </div>
+            <table id="empInfo">
+                <tr>
+                    <th>사원번호</th>
+                    <td><input type="number" name="employeeId" readonly></td>
+                </tr>
+                <tr>
+                    <th>사원이름</th>
+                    <td><input type="text" name="lastName"></td>
+                </tr>
+                <tr>
+                    <th>이메일</th>
+                    <td><input type="email" name="email"></td>
+                </tr>
+                <tr>
+                    <th>입사일</th>
+                    <td><input type="date" name="hireDate"></td>
+                </tr>
+                <tr>
+                    <th>업무</th>
+                    <td><input type="text" name="jobId"></td>
+                </tr>
+                <tr>
+                    <th>부서정보</th>
+                    <td>
+                        <select id="deptData" name="departmentId">
+                            <option value="" selected>선택안함</option>
+                        </select>
+                    </td>
+                </tr>
+            </table>
+            <div class="btns">
+                <button type="button" id="initBtn">초기화</button>
+                <button type="button" id="insertBtn">등록</button>
+                <button type="button" id="updateBtn">수정</button>
+                <button type="button" id="delBtn">삭제</button>
+            </div>
+        </div>
+    </div>
+    <script src="js/handler.js"></script>
+</body>
+
+</html>
